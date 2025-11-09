@@ -5,6 +5,10 @@ package de.phl.programmingproject.enrollmentsystem;
  */
 public class Main {
     public static void main(String[] args) {
-        // TODO: implement your program here.
-    }
+        package de.phl.programmingproject.petadoption;
+        
+        import java.util.Date;
+        
+        public class Main {
+
 }
