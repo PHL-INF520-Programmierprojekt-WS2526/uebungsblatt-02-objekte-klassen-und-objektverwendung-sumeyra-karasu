@@ -33,7 +33,6 @@ public class Main {
         // 8) Adoptionsstatus nach der Adoption erneut prüfen
         System.out.println("Ist Buddy jetzt adoptiert? " + buddy.isAdopted());
     }
-}
 
     }
-}
+
