@@ -6,62 +6,52 @@ import java.util.List;
  * PUT YOUR CODE FOR THE EXERCISE 'STUDENT ENROLLMENT SYSTEM' IN THIS CLASS
  */
 
-
 public class Main {
     public static void main(String[] args) {
 
-    // 1) Student anlegen
-        Student john = new Student("John Doe", "12345");
+     Student student = new Student("John Doe", "12345");
+        Course course1 = new Course("Introduction to Computer Science");
 
-        // 2) Kurs anlegen
-        Course introCS = new Course("Einführung in die Informatik");
+       
+        System.out.println(student.getInfo());
+        System.out.println(course1.getInfo());
+        System.out.println();
 
-        // 3) Infos ausgeben
-        System.out.println("Student-Info: " + john.getInfo());
-        System.out.println("Kurs-Info: " + introCS.getInfo());
+        
+        Enrollment enrollment = student.enroll(course1);
 
-        // 4) In Kurs einschreiben und Enrollment speichern
-        Enrollment enrollment1 = john.enroll(introCS);
+      
+        System.out.println("Nach der Einschreibung:");
+        System.out.println(student.getCourses());
+        System.out.println(course1.getStudents());
+        System.out.println(enrollment.getInfo());
+        System.out.println();
 
-        // 5) Erneut Infos ausgeben
-        System.out.println("Student nach Einschreibung: " + john.getInfo());
-        System.out.println("Kurs nach Einschreibung: " + introCS.getInfo());
+        
+        enrollment.setGrade(4.0);
+        System.out.println("Nach Notenänderung:");
+        System.out.println(enrollment.getInfo());
+        System.out.println();
 
-        // 6) Enrollment-Infos ausgeben
-        System.out.println(enrollment1.getInfo());
+       
+        Course course2 = new Course("Object-Oriented Programming");
+        student.enroll(course2);
 
-        // 7) Note setzen
-        enrollment1.setGrade(4.0);
-
-        // 8) Enrollment-Infos erneut ausgeben
-        System.out.println(enrollment1.getInfo());
-
-        // 9) Weiteren Kurs anlegen
-        Course oop = new Course("Objektorientierte Programmierung");
-
-        // 10) In neuen Kurs einschreiben
-        john.enroll(oop);
-
-        // 11) Liste der Kurse des Studenten ausgeben
-        System.out.println("\nKurse von " + john.getName() + ":");
-        List<Course> courses = john.getCourses();
-        for (Course c : courses) {
-            System.out.println(" - " + c.getInfo());
+      
+        System.out.println("Kurse von " + student.getInfo() + ":");
+        for (Course c : student.getCourses()) {
+            System.out.println("- " + c.getInfo());
         }
 
-        // 12) Studierende im ersten Kurs ausgeben
-        System.out.println("\nStudierende in \"" + introCS.getName() + "\":");
-        for (Student s : introCS.getStudents()) {
-            System.out.println(" - " + s.getInfo());
+        System.out.println("\nStudenten in " + course1.getInfo() + ":");
+        for (Student s : course1.getStudents()) {
+            System.out.println("- " + s.getInfo());
         }
 
-        // 13) Student aus erstem Kurs streichen
-        introCS.drop(john); // alternativ: john.drop(introCS);
-
-        // 14) Studierende erneut ausgeben (nach Drop)
-        System.out.println("\nNach dem Drop in \"" + introCS.getName() + "\":");
-        for (Student s : introCS.getStudents()) {
-            System.out.println(" - " + s.getInfo());
+        student.drop(course1);
+        System.out.println("\nNach dem Streichen aus dem ersten Kurs:");
+        for (Student s : course1.getStudents()) {
+            System.out.println("- " + s.getInfo());
         }
     }
 }
